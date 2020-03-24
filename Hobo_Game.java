@@ -99,8 +99,9 @@ public class Hobo_Game extends JFrame
     }//end of drawarea
     public void paintComponent (Graphics g)  // g can be passed to a class method
     {//start of paintComponent
-      Font f1 = new Font ("Impact", Font.PLAIN, 30);
+      Font f1 = new Font ("Times New Roman", Font.PLAIN, 30);
       g.setFont(f1);
+      g.setColor(Color.WHITE);
       g.drawString("test string", 540, 320);
     }//end
    }///end of class
