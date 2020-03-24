@@ -64,13 +64,14 @@ public class Hobo_Game extends JFrame
     JPanel background = new JPanel (); // Create a content panel to hold the backgournd images
     background.setLayout(null);// sets layout to null so that set bounds can be used 
     // timer setup   
-    
+  
     // Colouring panels  
     setBackground(Color.BLACK);
     //timer setup   
   
     // Creating Drawing Area and Panel Setup
     DrawArea playfield = new DrawArea (1080, 740);
+    background.add(playfield); // Output area
     setContentPane(background);
     background.setFocusable(true);
 //--------------------------------------------------------------------        
@@ -99,7 +100,9 @@ public class Hobo_Game extends JFrame
     
     public void paintComponent (Graphics g)  // g can be passed to a class method
     {//start of paintComponent
-      g.drawString("test string", 540, 320);
+     Font f1 = new Font ("Impact", Font.PLAIN, 30);
+     g.setFont(f1);
+     g.drawString("hello", 100,100);
     }//end
    }///end of class
 //----------------------------------------------------------------------------------------
