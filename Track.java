@@ -8,6 +8,7 @@ public class Track {
         trainOn = false;
         hobos = 0;
     }
+    
 
     //set hobos to number
     public void setHobos(int hobos) {
