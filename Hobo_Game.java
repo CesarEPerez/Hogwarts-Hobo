@@ -71,6 +71,7 @@ public class Hobo_Game extends JFrame
   
     // Creating Drawing Area and Panel Setup
     DrawArea playfield = new DrawArea (1080, 740);
+    background.add(playfield); // Output area
     setContentPane(background);
     background.setFocusable(true);
 //--------------------------------------------------------------------        
@@ -96,9 +97,10 @@ public class Hobo_Game extends JFrame
     {//start of drawarea
       this.setBounds( 0, 0, width, height);//(new Dimension (width, height));
     }//end of drawarea
-    
     public void paintComponent (Graphics g)  // g can be passed to a class method
     {//start of paintComponent
+      Font f1 = new Font ("Impact", Font.PLAIN, 30);
+      g.setFont(f1);
       g.drawString("test string", 540, 320);
     }//end
    }///end of class
