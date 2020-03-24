@@ -85,7 +85,7 @@ public class Hobo_Game extends JFrame
     setVisible(true); //Reveals JFrame
     setResizable(false); 
     setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-    javasetLocationRelativeTo(null);//centers window on launch    
+    setLocationRelativeTo(null);//centers window on launch    
   }//end of panel setup
 //========================================<Draw class>======================================= 
   class DrawArea extends JPanel
