@@ -78,7 +78,7 @@ public class Hobo_Game extends JFrame
 //--------------------------------------------------------------------
     pack();
     // Game window Setup  
-    setTitle("Hobo Gasme");
+    setTitle("Hobo Game");
     background.setPreferredSize (new Dimension (1080,740));
     setSize(1080,740); //Sets the JFrame size
     setVisible(true); //Reveals JFrame
@@ -99,7 +99,7 @@ public class Hobo_Game extends JFrame
     
     public void paintComponent (Graphics g)  // g can be passed to a class method
     {//start of paintComponent
-     
+      g.drawString("test string", 540, 320);
     }//end
    }///end of class
 //----------------------------------------------------------------------------------------
