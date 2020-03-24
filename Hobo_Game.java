@@ -8,7 +8,6 @@ import javax.swing.event.*; // Allows use of events
 import javax.imageio.*; // for images
 import java.io.*; // for file reading/loading
 import java.io.FileNotFoundException; //exception error
-import sun.audio.*;     //sun.audio package imported (sound)     
 import java.util.ArrayList; //allows use of Arraylist  
 import java.awt.Color; //for color
 import java.awt.Graphics; //for drawing graphics
@@ -17,10 +16,7 @@ import java.awt.Graphics; //for drawing graphics
 
 public class Hobo_Game extends JFrame
 {// start
-//==================================<Audio Streams>===================================
-//Creating AudioStream objects (null is default declaration)
-  public static AudioStream sfx = null; // audiostream for short sound effects
-  public static AudioStream playing = null; // audiostream for music
+
   Timer animation = new Timer(80,null);//manages transitions  
 
 //==================================<Image Method>====================================
@@ -37,24 +33,7 @@ public class Hobo_Game extends JFrame
     return img;
   }//end 
 //==================================<Sound Method>====================================  
-  public static void Player (String audioname)  // Music method
-  {//start
-    InputStream in = null; // Readies input stream  for audio
-    try
-    {
-      in = new FileInputStream (new File (audioname)); // for importing Files into FileInputStream
-    }
-    catch (FileNotFoundException e)
-    {
-    }
-    try
-    {
-      playing = new AudioStream (in);
-    }
-    catch (IOException e)
-    {
-    }
-  }//end  
+ 
 
 //=================================<Panel constructor>============================== 
   public Hobo_Game() 
