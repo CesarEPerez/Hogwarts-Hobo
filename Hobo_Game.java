@@ -64,7 +64,7 @@ public class Hobo_Game extends JFrame
     JPanel background = new JPanel (); // Create a content panel to hold the backgournd images
     background.setLayout(null);// sets layout to null so that set bounds can be used 
     // timer setup   
-    
+  
     // Colouring panels  
     setBackground(Color.BLACK);
     //timer setup   
