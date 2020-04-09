@@ -188,15 +188,5 @@ public class SetupPanel extends JPanel {
         });
         add(btn);
 	}
-	
-	public int getNumberOfTracks() { return this.numberOfTracks; }
-
-	public int getNumberOfHobos() { return this.numberOfHobos; }
-
-	public int getInterTrainDistance() { return this.interTrainDistance; }
-
-	public boolean getLyingHobos() { return this.lyingHobos == 1; }
-
-	public int getDistributionType() { return this.distributionType; }
 
 }
