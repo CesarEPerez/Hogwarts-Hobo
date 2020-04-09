@@ -7,6 +7,7 @@ public class Hobo_Game extends JFrame {
 
   private JPanel contentPane;
   private JPanel endScreen;
+  private JPanel animationScreen;
 
 	/**
 	 * Launch the application.
@@ -32,11 +33,12 @@ public class Hobo_Game extends JFrame {
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setBounds(100, 100, 830, 630);
-    endScreen = new EndScreen("Bob", 1);
-		contentPane = new SetupPanel(new PanelSwitcher() {
+	endScreen = new EndScreen("Bob", 1);
+	animationScreen = new AnimationPanel();
+	contentPane = new SetupPanel(new PanelSwitcher() {
       public void switchPanel() {
         contentPane.setVisible(false);
-        add(endScreen);
+        add(animationScreen);
       }
     });
 		add(contentPane);

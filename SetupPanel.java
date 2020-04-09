@@ -24,7 +24,7 @@ public class SetupPanel extends JPanel {
 		numTrackSlider.setSnapToTicks(true);
 		numTrackSlider.setPaintLabels(true);
 		numTrackSlider.setMinorTickSpacing(1);
-		numTrackSlider.setMaximum(10);
+		numTrackSlider.setMaximum(6);
 		numTrackSlider.setMinimum(1);
 		numTrackSlider.setValue(1);
 		numTrackSlider.setPaintTicks(true);
