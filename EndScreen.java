@@ -23,7 +23,6 @@ public class EndScreen extends JPanel {
         c.gridy = 0;
         add(winnerLabel, c);
         c.gridy = 1;
-        
         add(healthLabel, c);
 
     }
