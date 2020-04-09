@@ -7,7 +7,13 @@ import java.awt.event.*;
 
 
 public class SetupPanel extends JPanel {
-    
+
+	private int numberOfTracks;
+	private int numberOfHobos;
+	private int interTrainDistance;
+	private int lyingHobos;
+	private int distributionType;
+
     public SetupPanel(PanelSwitcher panelSwitcher) {
         setBackground(Color.WHITE);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -174,10 +180,23 @@ public class SetupPanel extends JPanel {
         btn.setBounds(56, 353, 70, 30);
         btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+				numberOfTracks = numTrackSlider.getValue();
+				numberOfHobos = numHobosSlider.getValue();
+				interTrainDistance = inter_trainDistanceSlider.getValue();
                 panelSwitcher.switchPanel();
             }
         });
         add(btn);
-    }
+	}
+	
+	public int getNumberOfTracks() { return this.numberOfTracks; }
+
+	public int getNumberOfHobos() { return this.numberOfHobos; }
+
+	public int getInterTrainDistance() { return this.interTrainDistance; }
+
+	public boolean getLyingHobos() { return this.lyingHobos == 1; }
+
+	public int getDistributionType() { return this.distributionType; }
 
 }
