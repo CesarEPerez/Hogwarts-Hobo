@@ -64,8 +64,14 @@ public class AnimationPanel extends JPanel {
 
     private void createHobos() {
         this.hobos = new Character[numberOfHobos];
-        for (Character hobo : hobos) {
+        for (Character hobo : this.hobos) {
             hobo = new Character(this.numberOfTracks);
+        }
+    }
+
+    private void changeHoboTracksRandom() {
+        for (Character hobo : this.hobos) {
+            hobo.changeTrackRandom();
         }
     }
 
