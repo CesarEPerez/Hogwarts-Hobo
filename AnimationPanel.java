@@ -6,8 +6,6 @@ public class AnimationPanel extends JPanel {
 
     Timer t = new Timer(50,null);// updates graphics
     
-
-    
     private int numberOfTracks;
     private int numberOfHobos;
     private int interTrainDistance;
@@ -16,9 +14,9 @@ public class AnimationPanel extends JPanel {
 
     public AnimationPanel(int numberOfTracks, int numberOfHobos, int interTrainDistance, boolean lyingHobos, int distributionType) {
         setBackground(Color.BLACK);
-        setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-
+        setLayout(null);
+        DrawArea canvas = new DrawArea(830, 420);
+        setFocusable(true);
         this.numberOfTracks = numberOfTracks;
         this.numberOfHobos = numberOfHobos;
         this.interTrainDistance = interTrainDistance;
@@ -44,8 +42,9 @@ public class AnimationPanel extends JPanel {
         // label5.setFont(new Font("Tahoma", Font.PLAIN, 20));
         // label5.setForeground(Color.WHITE);
         
-        // c.gridx = 0;
-        // c.gridy = 0;
+        //c.gridx = 0;
+        //c.gridy = 0;
+        add(canvas, c);
         // add(label1, c);
         // c.gridy = 1;
         // add(label2, c);
@@ -64,7 +63,7 @@ public class AnimationPanel extends JPanel {
 
     public void decide()
     {
-        
+
     }
     //========================================<Draw class>======================================= 
     class DrawArea extends JPanel
@@ -78,7 +77,8 @@ public class AnimationPanel extends JPanel {
     
     public void paintComponent (Graphics g)  // g can be passed to a class method
     {//start of paintComponent
-        
+        g.setColor(Color.WHITE);
+        g.drawLine(100, 100, 300, 100);
     }//end of paintComponent
 
     public void drawtracks(Graphics g)
