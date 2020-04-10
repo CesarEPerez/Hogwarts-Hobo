@@ -1,6 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+
+
 public class AnimationPanel extends JPanel {
+
+    Timer t = new Timer(50,null);// updates graphics
+    hobo
+
     
     public AnimationPanel(int numberOfTracks, int numberOfHobos, int interTrainDistance, boolean lyingHobos, int distributionType) {
         setBackground(Color.BLACK);
@@ -38,6 +44,45 @@ public class AnimationPanel extends JPanel {
         c.gridy = 4;
         add(label5, c);
 
-    }
+    }//end of panel
+    public void update()
+    {
 
-}
+    }
+    //========================================<Draw class>======================================= 
+    class DrawArea extends JPanel
+    {//start of drawarea
+    
+    
+    public DrawArea (int width, int height)// Create panel of given size
+    {//start of drawarea
+        this.setBounds( 0, 0, width, height);//(new Dimension (width, height));
+    }//end of drawarea
+    
+    public void paintComponent (Graphics g)  // g can be passed to a class method
+    {//start of paintComponent
+        
+    }//end of paintComponent
+    
+    
+    }//end of drawarea
+
+
+
+    class TimerListener implements ActionListener //reacts to timer
+  {//start
+    TimerListener()
+    {//start
+      t.start();//starts timer
+    }//end
+    public void actionPerformed (ActionEvent e)
+    {//start of void
+      update();//updates graphics
+      decide();//decides what to do 
+    } //end of void
+  }//end of class 
+
+}//end of main class
+
+
+

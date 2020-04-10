@@ -5,32 +5,32 @@ public class Character {
 
     public Character(int trackNum, int maxTracks) {
         lives = 3;
-        onTrack = trackNum/2;
+        onTrack = trackNum;
         alive = true;
     }
 
-    public getLives() {
+    public int getLives() {
         return lives;
     }
 
-    public loseLife() {
+    public void loseLife() {
         lives -= 1;
         if (lives == 0) {
             alive = false;
         } else {
-            if (self.getTrack() == maxTracks) {
-                self.setTrack(self.getTrack() - 1)    
+            if (this.onTrack == maxTracks) {
+                this.onTrack = maxTracks;
             } else {
-                self.setTrack(self.getTrack() + 1)
+                this.onTrack = maxTracks;
             }
         }
     }
 
-    public getTrack() {
+    public int getTrack() {
         return onTrack;
     }
 
-    public setTrack(int trackNum) {
+    public void setTrack(int trackNum) {
         onTrack = trackNum;
     }
 }
