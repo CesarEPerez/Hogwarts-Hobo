@@ -1,10 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.SwingUtilities;
 
 public class AnimationPanel extends JPanel {
 
     Timer t = new Timer(100,null);// updates graphics
+    int secondsCounter = 0;
     
     private int numberOfTracks;
     private int numberOfHobos;
@@ -118,8 +120,25 @@ public class AnimationPanel extends JPanel {
     public void actionPerformed (ActionEvent e)
     {//start of void
       System.out.println("Hi");
+      secondsCounter++;
       update();//updates graphics
       decide();//decides what to do 
+
+      if(secondsCounter%100==0) {
+          System.out.println("10 second has passed");
+      }
+
+      if(secondsCounter==300){ //After 30s stop simulation
+          setVisible(false);
+          t.stop();
+          EndScreen endPanel = new EndScreen("WIN", 100);
+          add(endPanel);
+          endPanel.setVisible(true);
+      }
+
+      if (numberOfHobos==1){ //If only 1 Hobo left, stop the game
+          t.stop();
+      }
     } //end of void
   }//end of class 
   
