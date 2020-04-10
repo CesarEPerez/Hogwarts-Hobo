@@ -17,9 +17,10 @@ public class AnimationPanel extends JPanel {
 
     public AnimationPanel(int numberOfTracks, int numberOfHobos, int interTrainDistance, boolean lyingHobos, int distributionType) {
         setBackground(Color.BLACK);
-        setLayout(null);
+        setLayout();
         DrawArea canvas = new DrawArea(830, 420);
         setFocusable(true);
+        setVisible(true);
         this.numberOfTracks = numberOfTracks;
         this.numberOfHobos = numberOfHobos;
         this.interTrainDistance = interTrainDistance;
@@ -108,6 +109,7 @@ public class AnimationPanel extends JPanel {
   }//end of class 
   
     private void createTracks() {
+        Track track;
         this.tracks = new Track[numberOfTracks];
         for (int i = 0; i < tracks.length; i++) {
             track = new Track(i);

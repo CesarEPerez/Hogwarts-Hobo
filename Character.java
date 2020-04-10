@@ -24,11 +24,10 @@ public class Character {
         if (lives == 0) {
             alive = false;
         } else {
-           
-            if (this.getTrack() == maxTracks) {
-                this.setTrack(this.getTrack() - 1);
+            if (getTrack() == this.maxTracks) {
+                setTrack(getTrack() - 1);
             } else {
-                this.setTrack(this.getTrack() + 1);
+                setTrack(getTrack() + 1);
             }
         }
     }
