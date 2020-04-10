@@ -128,6 +128,8 @@ public class AnimationPanel extends JPanel {
       update();//updates graphics
       decide();//decides what to do 
 
+      System.out.println(secondsCounter); //Print the counter
+
       if(secondsCounter%100==0) {
           System.out.println("10 second has passed");
       }
@@ -137,10 +139,17 @@ public class AnimationPanel extends JPanel {
         panelSwitcher.switchPanel();
       }
 
-      if (numberOfHobos==1){ //If only 1 Hobo left, stop the game
-          t.stop();
-      }
+    }
+      //if(secondsCounter){ //After 30s stop simulation
+          //t.stop();
+      //}
+
+    //   if (numberOfHobos==1){ //If only 1 Hobo left, stop the game
+    //       t.stop();
+    //   }
     } //end of void
+
+    
   }//end of class 
   
     private void createTracks() {
