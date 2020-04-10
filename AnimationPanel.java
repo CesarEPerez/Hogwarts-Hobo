@@ -157,7 +157,7 @@ public class AnimationPanel extends JPanel {
                 System.out.println("10 second has passed");
             }
 
-            if(secondsCounter==300){ //After 30s stop simulation
+            if(secondsCounter==150 || numberOfHobos ==1){ //After 15s stop simulation
             t.stop();
             panelSwitcher.switchPanel();
             }
