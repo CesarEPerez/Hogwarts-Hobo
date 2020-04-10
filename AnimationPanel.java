@@ -109,10 +109,6 @@ public class AnimationPanel extends JPanel {
 
 }//end of main class
 
-
-
-<<<<<<< HEAD
-=======
     private void createTracks() {
         this.tracks = new Track[numberOfTracks];
         for (int i = 0; i < tracks.length; i++) {
@@ -134,4 +130,3 @@ public class AnimationPanel extends JPanel {
     }
 
 } 
->>>>>>> d549f27c5be5cfd464dfc702bb405d6327cd99e5
