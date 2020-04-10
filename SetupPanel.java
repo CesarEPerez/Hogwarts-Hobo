@@ -18,7 +18,7 @@ public class SetupPanel extends JPanel {
         setBackground(Color.WHITE);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLayout(null);
-		setBounds(100, 100, 842, 532);
+		setBounds(100, 100, 830, 630);
         
         JLabel numTrackVal = new JLabel("2 tracks");
 		numTrackVal.setFont(new Font("Tahoma", Font.PLAIN, 14));
