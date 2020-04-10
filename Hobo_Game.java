@@ -30,8 +30,12 @@ public class Hobo_Game extends JFrame {
 	public Hobo_Game() {
 		setTitle("Hogwarts Hobo Game");
 		setBackground(Color.WHITE);
+		pack();  
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 830, 420);
+		setSize(830,420);
+		//setBounds(100, 100, 830, 420);
+		setResizable(false); 
+		setLocationRelativeTo(null);//centers window on launch  
 		endScreen = new EndScreen("Bob", 1);
 		setupScreen = new SetupPanel(new PanelSwitcher() {
 			public void switchPanel() {

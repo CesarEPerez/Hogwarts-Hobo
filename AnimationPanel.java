@@ -16,13 +16,13 @@ public class AnimationPanel extends JPanel {
     private Character[] hobos;
 
     public AnimationPanel(int numberOfTracks, int numberOfHobos, int interTrainDistance, boolean lyingHobos, int distributionType) {
+      
+        setLayout(null);
         setBackground(Color.BLACK);
-        setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
         DrawArea canvas = new DrawArea(830, 420);
         t.addActionListener(new TimerListener());
-        setFocusable(true);
-        setVisible(true);
+       
+        
         this.numberOfTracks = numberOfTracks;
         this.numberOfHobos = numberOfHobos;
         this.interTrainDistance = interTrainDistance;
@@ -48,9 +48,10 @@ public class AnimationPanel extends JPanel {
         // label5.setFont(new Font("Tahoma", Font.PLAIN, 20));
         // label5.setForeground(Color.WHITE);
         
-        c.gridx = 0;
-        c.gridy = 0;
-        add(canvas,c);
+       
+        add(canvas);
+        setFocusable(true);
+        setVisible(true);
         // add(label1, c);
         // c.gridy = 1;
         // add(label2, c);
@@ -75,24 +76,26 @@ public class AnimationPanel extends JPanel {
     class DrawArea extends JPanel
     {//start of drawarea
     
-    
-    public DrawArea (int width, int height)// Create panel of given size
-    {//start of drawarea
-        this.setBounds( 0, 0, width, height);//(new Dimension (width, height));
-    }//end of drawarea
-    
-    public void paintComponent (Graphics g)  // g can be passed to a class method
-    {//start of paintComponent
-        g.setColor(Color.WHITE);
-        g.drawLine(100, 100, 300, 100);
-        repaint();
-    }//end of paintComponent
+        public DrawArea (int width, int height)// Create panel of given size
+        {//start of drawarea
+            this.setBounds( 0, 0, width, height);//(new Dimension (width, height));
+            this.setBackground(Color.BLACK);
+        }//end of drawarea
+        @Override
+        public void paintComponent (Graphics g)  // g can be passed to a class method
+        {//start of paintComponent
+            super.paintComponent(g);
+            g.setColor(Color.WHITE);
+            g.drawLine(100, 100, 300, 100);
+            g.fillRect(100, 100, 100, 100);
+            repaint();
+        }//end of paintComponent
 
-    public void drawtracks(Graphics g)
-    {
+        public void drawtracks(Graphics g)
+        {
 
-    } 
-    
+        } 
+        
     
     }//end of drawarea
 
