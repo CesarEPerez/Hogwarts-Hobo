@@ -13,7 +13,7 @@ public class AnimationPanel extends JPanel {
     private int distributionType;
 
     private Track[] tracks;
-    private Hobo[] hobos;
+    private Character[] hobos;
 
     public AnimationPanel(int numberOfTracks, int numberOfHobos, int interTrainDistance, boolean lyingHobos, int distributionType) {
         setBackground(Color.BLACK);
@@ -47,7 +47,7 @@ public class AnimationPanel extends JPanel {
         
         //c.gridx = 0;
         //c.gridy = 0;
-        add(canvas, c);
+        add(canvas);
         // add(label1, c);
         // c.gridy = 1;
         // add(label2, c);
@@ -59,6 +59,27 @@ public class AnimationPanel extends JPanel {
         // add(label5, c);
 
     }//end of panel
+
+    private void createTracks() {
+        this.tracks = new Track[numberOfTracks];
+        for (int i = 0; i < tracks.length; i++) {
+            tracks[i] = new Track(i);
+        }
+    }
+
+    private void createHobos() {
+        this.hobos = new Character[numberOfHobos];
+        for (Character hobo : this.hobos) {
+            hobo = new Character(this.numberOfTracks);
+        }
+    }
+
+    private void changeHoboTracksRandom() {
+        for (Character hobo : this.hobos) {
+            hobo.changeTrackRandom();
+        }
+    }
+
     public void update()
     {
         repaint();
@@ -68,10 +89,11 @@ public class AnimationPanel extends JPanel {
     {
 
     }
-    //========================================<Draw class>======================================= 
-    class DrawArea extends JPanel
-    {//start of drawarea
-    
+
+}
+//========================================<Draw class>======================================= 
+class DrawArea extends JPanel
+{//start of drawarea
     
     public DrawArea (int width, int height)// Create panel of given size
     {//start of drawarea
@@ -89,13 +111,10 @@ public class AnimationPanel extends JPanel {
 
     } 
     
-    
-    }//end of drawarea
+}//end of drawarea
 
-
-
-    class TimerListener implements ActionListener //reacts to timer
-  {//start
+class TimerListener implements ActionListener //reacts to timer
+{//start
     TimerListener()
     {//start
       t.start();//starts timer
@@ -104,34 +123,7 @@ public class AnimationPanel extends JPanel {
     {//start of void
       update();//updates graphics
       decide();//decides what to do 
+      System.out.println("yoyoyo");
     } //end of void
-  }//end of class 
 
-}//end of main class
-
-
-
-<<<<<<< HEAD
-=======
-    private void createTracks() {
-        this.tracks = new Track[numberOfTracks];
-        for (int i = 0; i < tracks.length; i++) {
-            track = new Track(i);
-        }
-    }
-
-    private void createHobos() {
-        this.hobos = new Character[numberOfHobos];
-        for (Character hobo : this.hobos) {
-            hobo = new Character(this.numberOfTracks);
-        }
-    }
-
-    private void changeHoboTracksRandom() {
-        for (Character hobo : this.hobos) {
-            hobo.changeTrackRandom();
-        }
-    }
-
-} 
->>>>>>> d549f27c5be5cfd464dfc702bb405d6327cd99e5
+}//end of class 

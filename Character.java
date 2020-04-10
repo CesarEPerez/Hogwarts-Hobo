@@ -10,12 +10,8 @@ public class Character {
 
     public Character(int maxTracks) {
         lives = 3;
-<<<<<<< HEAD
-        onTrack = trackNum;
-=======
         onTrack = rand.nextInt(maxTracks);
         this.maxTracks = maxTracks;
->>>>>>> d549f27c5be5cfd464dfc702bb405d6327cd99e5
         alive = true;
     }
 
@@ -28,17 +24,10 @@ public class Character {
         if (lives == 0) {
             alive = false;
         } else {
-<<<<<<< HEAD
-            if (this.onTrack == maxTracks) {
-                this.onTrack = maxTracks;
+            if (getTrack() == this.maxTracks) {
+                setTrack(getTrack() - 1);
             } else {
-                this.onTrack = maxTracks;
-=======
-            if (self.getTrack() == maxTracks) {
-                self.setTrack(self.getTrack() - 1);
-            } else {
-                self.setTrack(self.getTrack() + 1);
->>>>>>> d549f27c5be5cfd464dfc702bb405d6327cd99e5
+                setTrack(getTrack() + 1);
             }
         }
     }
@@ -51,7 +40,7 @@ public class Character {
         onTrack = trackNum;
     }
 
-    public changeTrackRandom() {
+    public void changeTrackRandom() {
         this.onTrack = rand.nextInt(maxTracks);
     }
 }
