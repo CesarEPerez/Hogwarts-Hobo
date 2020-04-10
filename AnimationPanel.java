@@ -66,6 +66,28 @@ public class AnimationPanel extends JPanel {
         // add(label5, c);
 
     }//end of panel
+
+    private void createTracks() {
+        Track track;
+        this.tracks = new Track[numberOfTracks];
+        for (int i = 0; i < tracks.length; i++) {
+            track = new Track(i);
+        }
+    }
+
+    private void createHobos() {
+        this.hobos = new Character[numberOfHobos];
+        for (Character hobo : this.hobos) {
+            hobo = new Character(this.numberOfTracks);
+        }
+    }
+
+    private void changeHoboTracksRandom() {
+        for (Character hobo : this.hobos) {
+            hobo.changeTrackRandom();
+        }
+    }
+
     public void update()
     {
         repaint();
@@ -75,10 +97,11 @@ public class AnimationPanel extends JPanel {
     {
 
     }
+
     //========================================<Draw class>======================================= 
     class DrawArea extends JPanel
     {//start of drawarea
-    
+        
         public DrawArea (int width, int height)// Create panel of given size
         {//start of drawarea
             this.setBounds( 0, 0, width, height);//(new Dimension (width, height));
@@ -107,70 +130,46 @@ public class AnimationPanel extends JPanel {
 
         } 
         
-    
+
     }//end of drawarea
 
 
 
     class TimerListener implements ActionListener //reacts to timer
-  {//start
-
-    PanelSwitcher panelSwitcher;
-    TimerListener(PanelSwitcher panelSwitcher)
     {//start
-        this.panelSwitcher = panelSwitcher;
-      t.start();//starts timer
-    }//end
-    public void actionPerformed (ActionEvent e)
-    {//start of void
-      System.out.println("Hi");
-      secondsCounter++;
-      update();//updates graphics
-      decide();//decides what to do 
 
-      System.out.println(secondsCounter); //Print the counter
+        PanelSwitcher panelSwitcher;
+        TimerListener(PanelSwitcher panelSwitcher)
+        {//start
+            this.panelSwitcher = panelSwitcher;
+            t.start();//starts timer
+        }//end
+        public void actionPerformed (ActionEvent e)
+        {//start of void
+            System.out.println("Hi");
+            secondsCounter++;
+            update();//updates graphics
+            decide();//decides what to do 
 
-      if(secondsCounter%100==0) {
-          System.out.println("10 second has passed");
-      }
+            System.out.println(secondsCounter); //Print the counter
 
-      if(secondsCounter==300){ //After 30s stop simulation
-        t.stop();
-        panelSwitcher.switchPanel();
-      }
+            if(secondsCounter%100==0) {
+                System.out.println("10 second has passed");
+            }
 
-    }
-      //if(secondsCounter){ //After 30s stop simulation
-          //t.stop();
-      //}
+            if(secondsCounter==300){ //After 30s stop simulation
+            t.stop();
+            panelSwitcher.switchPanel();
+            }
 
-    //   if (numberOfHobos==1){ //If only 1 Hobo left, stop the game
-    //       t.stop();
-    //   }
-    } //end of void
-
-    
-  }//end of class 
-  
-    private void createTracks() {
-        Track track;
-        this.tracks = new Track[numberOfTracks];
-        for (int i = 0; i < tracks.length; i++) {
-            track = new Track(i);
         }
-    }
+            //if(secondsCounter){ //After 30s stop simulation
+                //t.stop();
+            //}
 
-    private void createHobos() {
-        this.hobos = new Character[numberOfHobos];
-        for (Character hobo : this.hobos) {
-            hobo = new Character(this.numberOfTracks);
-        }
-    }
+        //   if (numberOfHobos==1){ //If only 1 Hobo left, stop the game
+        //       t.stop();
+        //   }
+    }//end of void
 
-    private void changeHoboTracksRandom() {
-        for (Character hobo : this.hobos) {
-            hobo.changeTrackRandom();
-        }
-    }
-
-} 
+}
