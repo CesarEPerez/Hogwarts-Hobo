@@ -17,7 +17,8 @@ public class AnimationPanel extends JPanel {
 
     public AnimationPanel(int numberOfTracks, int numberOfHobos, int interTrainDistance, boolean lyingHobos, int distributionType) {
         setBackground(Color.BLACK);
-        setLayout();
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
         DrawArea canvas = new DrawArea(830, 420);
         setFocusable(true);
         setVisible(true);
@@ -46,8 +47,8 @@ public class AnimationPanel extends JPanel {
         // label5.setFont(new Font("Tahoma", Font.PLAIN, 20));
         // label5.setForeground(Color.WHITE);
         
-        //c.gridx = 0;
-        //c.gridy = 0;
+        c.gridx = 0;
+        c.gridy = 0;
         add(canvas);
         // add(label1, c);
         // c.gridy = 1;
