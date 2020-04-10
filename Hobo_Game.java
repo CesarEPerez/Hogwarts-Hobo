@@ -7,6 +7,7 @@ public class Hobo_Game extends JFrame {
 
   private JPanel setupScreen;
   private JPanel endScreen;
+  private JPanel animationScreen;
 
 	/**
 	 * Launch the application.
@@ -44,7 +45,13 @@ public class Hobo_Game extends JFrame {
 				int interTrainDistance = ((SetupPanel) setupScreen).getInterTrainDistance();
 				boolean lyingHobos = ((SetupPanel) setupScreen).getLyingHobos();
 				int distributionType = ((SetupPanel) setupScreen).getDistributionType();
-				JPanel animationScreen = new AnimationPanel(numberOfTracks, numberOfHobos, interTrainDistance, lyingHobos, distributionType);
+				animationScreen = new AnimationPanel(numberOfTracks, numberOfHobos, interTrainDistance, lyingHobos, distributionType,
+				new PanelSwitcher() {
+					public void switchPanel() {
+						animationScreen.setVisible(false);
+						add(endScreen);
+					}
+				});
 				setupScreen.setVisible(false);
 				add(animationScreen);
 			}

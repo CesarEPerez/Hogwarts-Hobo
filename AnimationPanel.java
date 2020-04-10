@@ -17,12 +17,13 @@ public class AnimationPanel extends JPanel {
     private Track[] tracks;
     private Character[] hobos;
 
-    public AnimationPanel(int numberOfTracks, int numberOfHobos, int interTrainDistance, boolean lyingHobos, int distributionType) {
+    public AnimationPanel(int numberOfTracks, int numberOfHobos, int interTrainDistance, 
+    boolean lyingHobos, int distributionType, PanelSwitcher panelSwitcher) {
       
         setLayout(null);
         setBackground(Color.BLACK);
         DrawArea canvas = new DrawArea(830, 420);
-        t.addActionListener(new TimerListener());
+        t.addActionListener(new TimerListener(panelSwitcher));
        
         
         this.numberOfTracks = numberOfTracks;
@@ -113,8 +114,11 @@ public class AnimationPanel extends JPanel {
 
     class TimerListener implements ActionListener //reacts to timer
   {//start
-    TimerListener()
+
+    PanelSwitcher panelSwitcher;
+    TimerListener(PanelSwitcher panelSwitcher)
     {//start
+        this.panelSwitcher = panelSwitcher;
       t.start();//starts timer
     }//end
     public void actionPerformed (ActionEvent e)
@@ -129,11 +133,8 @@ public class AnimationPanel extends JPanel {
       }
 
       if(secondsCounter==300){ //After 30s stop simulation
-          setVisible(false);
-          t.stop();
-          EndScreen endPanel = new EndScreen("WIN", 100);
-          add(endPanel);
-          endPanel.setVisible(true);
+        t.stop();
+        panelSwitcher.switchPanel();
       }
 
       if (numberOfHobos==1){ //If only 1 Hobo left, stop the game
