@@ -5,9 +5,8 @@ import java.awt.Color;
 
 public class Hobo_Game extends JFrame {
 
-  private JPanel contentPane;
+  private JPanel setupScreen;
   private JPanel endScreen;
-  private JPanel animationScreen;
 
 	/**
 	 * Launch the application.
@@ -32,15 +31,20 @@ public class Hobo_Game extends JFrame {
 		setTitle("Hogwarts Hobo Game");
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setBounds(100, 100, 830, 630);
-	endScreen = new EndScreen("Bob", 1);
-	animationScreen = new AnimationPanel();
-	contentPane = new SetupPanel(new PanelSwitcher() {
-      public void switchPanel() {
-        contentPane.setVisible(false);
-        add(animationScreen);
-      }
-    });
-		add(contentPane);
+		setBounds(100, 100, 830, 420);
+		endScreen = new EndScreen("Bob", 1);
+		setupScreen = new SetupPanel(new PanelSwitcher() {
+			public void switchPanel() {
+				int numberOfTracks = ((SetupPanel) setupScreen).getNumberOfTracks();
+				int numberOfHobos = ((SetupPanel) setupScreen).getNumberOfHobos();
+				int interTrainDistance = ((SetupPanel) setupScreen).getInterTrainDistance();
+				boolean lyingHobos = ((SetupPanel) setupScreen).getLyingHobos();
+				int distributionType = ((SetupPanel) setupScreen).getDistributionType();
+				JPanel animationScreen = new AnimationPanel(numberOfTracks, numberOfHobos, interTrainDistance, lyingHobos, distributionType);
+				setupScreen.setVisible(false);
+				add(animationScreen);
+			}
+		});
+		add(setupScreen);
 	}
 }
