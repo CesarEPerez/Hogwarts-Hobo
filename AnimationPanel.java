@@ -1,11 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
-
+import java.awt.event.*;
 
 public class AnimationPanel extends JPanel {
 
     Timer t = new Timer(50,null);// updates graphics
-    hobo
+    
 
     
     public AnimationPanel(int numberOfTracks, int numberOfHobos, int interTrainDistance, boolean lyingHobos, int distributionType) {
@@ -47,7 +47,12 @@ public class AnimationPanel extends JPanel {
     }//end of panel
     public void update()
     {
+        repaint();
+    }
 
+    public void decide()
+    {
+        
     }
     //========================================<Draw class>======================================= 
     class DrawArea extends JPanel
@@ -63,6 +68,11 @@ public class AnimationPanel extends JPanel {
     {//start of paintComponent
         
     }//end of paintComponent
+
+    public void drawtracks(Graphics g)
+    {
+
+    } 
     
     
     }//end of drawarea
