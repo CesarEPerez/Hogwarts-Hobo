@@ -41,6 +41,7 @@ public class Character {
     }
 
     public void changeTrackRandom() {
-        this.onTrack = rand.nextInt(maxTracks);
+        int probability = rand.nextInt(10);
+        if (probability < 4) this.onTrack = rand.nextInt(maxTracks);
     }
 }

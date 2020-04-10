@@ -10,14 +10,14 @@ public class AnimationPanel extends JPanel {
     
     private int numberOfTracks;
     private int numberOfHobos;
-    private int interTrainDistance;
+    private int interTrainTime;
     private boolean lyingHobos;
     private int distributionType;
 
     private Track[] tracks;
     private Character[] hobos;
 
-    public AnimationPanel(int numberOfTracks, int numberOfHobos, int interTrainDistance, 
+    public AnimationPanel(int numberOfTracks, int numberOfHobos, int interTrainTime, 
     boolean lyingHobos, int distributionType, PanelSwitcher panelSwitcher) {
       
         setLayout(null);
@@ -28,7 +28,7 @@ public class AnimationPanel extends JPanel {
         
         this.numberOfTracks = numberOfTracks;
         this.numberOfHobos = numberOfHobos;
-        this.interTrainDistance = interTrainDistance;
+        this.interTrainTime = interTrainTime;
         this.lyingHobos = lyingHobos;
         this.distributionType = distributionType;
 
@@ -71,7 +71,7 @@ public class AnimationPanel extends JPanel {
         Track track;
         this.tracks = new Track[numberOfTracks];
         for (int i = 0; i < tracks.length; i++) {
-            track = new Track(i);
+            track = new Track(i, interTrainTime);
         }
     }
 
@@ -91,6 +91,8 @@ public class AnimationPanel extends JPanel {
     public void update()
     {
         repaint();
+        for (Character hobo : hobos) hobo.changeTrackRandom();
+        for (Track track : tracks) track.spawnNextTrain(secondsCounter);
     }
 
     public void decide()
@@ -146,20 +148,20 @@ public class AnimationPanel extends JPanel {
         }//end
         public void actionPerformed (ActionEvent e)
         {//start of void
-            System.out.println("Hi");
+            // System.out.println("Hi");
             secondsCounter++;
             update();//updates graphics
-            decide();//decides what to do 
+            // decide();//decides what to do 
 
-            System.out.println(secondsCounter); //Print the counter
+            // System.out.println(secondsCounter); //Print the counter
 
             if(secondsCounter%100==0) {
                 System.out.println("10 second has passed");
             }
 
             if(secondsCounter==300){ //After 30s stop simulation
-            t.stop();
-            panelSwitcher.switchPanel();
+                t.stop();
+                panelSwitcher.switchPanel();
             }
 
         }
