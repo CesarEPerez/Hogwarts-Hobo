@@ -90,7 +90,13 @@ public class AnimationPanel extends JPanel {
             {
                 g.fillRect(65, (y*25) + ((y-1)*20) , 700, 20);
             }
-            repaint();
+            
+
+            for(int y = 0; y < numberOfHobos; y++)
+            {
+                //g.fillOval(405, ((hobos[y].getTrack()*25)+(y*20)) , 20, 20);
+            }
+
         }//end of paintComponent
 
         public void drawtracks(Graphics g)
