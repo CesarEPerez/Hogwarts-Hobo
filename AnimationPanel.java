@@ -49,7 +49,7 @@ public class AnimationPanel extends JPanel {
         
         c.gridx = 0;
         c.gridy = 0;
-        add(canvas);
+        add(canvas,c);
         // add(label1, c);
         // c.gridy = 1;
         // add(label2, c);
@@ -84,6 +84,7 @@ public class AnimationPanel extends JPanel {
     {//start of paintComponent
         g.setColor(Color.WHITE);
         g.drawLine(100, 100, 300, 100);
+        repaint();
     }//end of paintComponent
 
     public void drawtracks(Graphics g)
