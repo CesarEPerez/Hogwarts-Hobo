@@ -39,4 +39,8 @@ public class Character {
     public setTrack(int trackNum) {
         onTrack = trackNum;
     }
+
+    public changeTrackRandom() {
+        this.onTrack = rand.nextInt(maxTracks);
+    }
 }
