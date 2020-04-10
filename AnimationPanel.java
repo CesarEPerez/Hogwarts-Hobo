@@ -8,6 +8,9 @@ public class AnimationPanel extends JPanel {
     private boolean lyingHobos;
     private int distributionType;
 
+    private Track[] tracks;
+    private Hobo[] hobos;
+
     public AnimationPanel(int numberOfTracks, int numberOfHobos, int interTrainDistance, boolean lyingHobos, int distributionType) {
         setBackground(Color.BLACK);
         setLayout(new GridBagLayout());
@@ -52,4 +55,18 @@ public class AnimationPanel extends JPanel {
 
     }
 
-}
+    private void createTracks() {
+        this.tracks = new Track[numberOfTracks];
+        for (int i = 0; i < tracks.length; i++) {
+            track = new Track(i);
+        }
+    }
+
+    private void createHobos() {
+        this.hobos = new Character[numberOfHobos];
+        for (Character hobo : hobos) {
+            hobo = new Character(this.numberOfTracks);
+        }
+    }
+
+} 

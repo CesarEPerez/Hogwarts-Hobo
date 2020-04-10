@@ -1,11 +1,17 @@
+import java.util.Random;
+
 public class Character {
     
-    int lives, onTrack, maxTracks;
+    int lives;
+    int onTrack;
+    int maxTracks;
     boolean alive;
+    Random rand = new Random();
 
-    public Character(int trackNum, int maxTracks) {
+    public Character(int maxTracks) {
         lives = 3;
-        onTrack = trackNum/2;
+        onTrack = rand.nextInt(maxTracks);
+        this.maxTracks = maxTracks;
         alive = true;
     }
 
@@ -19,9 +25,9 @@ public class Character {
             alive = false;
         } else {
             if (self.getTrack() == maxTracks) {
-                self.setTrack(self.getTrack() - 1)    
+                self.setTrack(self.getTrack() - 1);
             } else {
-                self.setTrack(self.getTrack() + 1)
+                self.setTrack(self.getTrack() + 1);
             }
         }
     }
