@@ -1,10 +1,12 @@
 public class Character {
     
-    int lives, onTrack;
+    int lives, onTrack, maxTracks;
+    boolean alive;
 
-    public Character(int trackNum) {
+    public Character(int trackNum, int maxTracks) {
         lives = 3;
         onTrack = trackNum/2;
+        alive = true;
     }
 
     public getLives() {
@@ -13,6 +15,15 @@ public class Character {
 
     public loseLife() {
         lives -= 1;
+        if (lives == 0) {
+            alive = false;
+        } else {
+            if (self.getTrack() == maxTracks) {
+                self.setTrack(self.getTrack() - 1)    
+            } else {
+                self.setTrack(self.getTrack() + 1)
+            }
+        }
     }
 
     public getTrack() {
@@ -22,5 +33,4 @@ public class Character {
     public setTrack(int trackNum) {
         onTrack = trackNum;
     }
-
 }
