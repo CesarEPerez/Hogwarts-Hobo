@@ -86,8 +86,10 @@ public class AnimationPanel extends JPanel {
         {//start of paintComponent
             super.paintComponent(g);
             g.setColor(Color.WHITE);
-            g.drawLine(100, 100, 300, 100);
-            g.fillRect(100, 100, 100, 100);
+            for(int y = 1; y <= numberOfTracks; y++ )
+            {
+                g.fillRect(65, (y*25) + ((y-1)*20) , 700, 20);
+            }
             repaint();
         }//end of paintComponent
 
