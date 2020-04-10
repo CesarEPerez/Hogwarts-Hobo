@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class AnimationPanel extends JPanel {
 
-    Timer t = new Timer(50,null);// updates graphics
+    Timer t = new Timer(100,null);// updates graphics
     
     private int numberOfTracks;
     private int numberOfHobos;
@@ -20,6 +20,7 @@ public class AnimationPanel extends JPanel {
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         DrawArea canvas = new DrawArea(830, 420);
+        t.addActionListener(new TimerListener());
         setFocusable(true);
         setVisible(true);
         this.numberOfTracks = numberOfTracks;
@@ -105,6 +106,7 @@ public class AnimationPanel extends JPanel {
     }//end
     public void actionPerformed (ActionEvent e)
     {//start of void
+      System.out.println("Hi");
       update();//updates graphics
       decide();//decides what to do 
     } //end of void
