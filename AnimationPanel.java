@@ -65,34 +65,53 @@ public class AnimationPanel extends JPanel {
         // c.gridy = 4;
         // add(label5, c);
 
+        createTracks();
+        createHobos();
+
     }//end of panel
 
     private void createTracks() {
-        Track track;
-        this.tracks = new Track[numberOfTracks];
-        for (int i = 0; i < tracks.length; i++) {
-            track = new Track(i, interTrainTime);
+        this.tracks = new Track[this.numberOfTracks];
+        for (int i = 0; i < this.tracks.length; i++) {
+            this.tracks[i] = new Track(i, interTrainTime);
         }
     }
 
     private void createHobos() {
-        this.hobos = new Character[numberOfHobos];
-        for (Character hobo : this.hobos) {
-            hobo = new Character(this.numberOfTracks);
+        this.hobos = new Character[this.numberOfHobos];
+        for (int i = 0; i < this.hobos.length; i++) {
+            this.hobos[i] = new Character(this.numberOfTracks, i);
         }
     }
 
-    private void changeHoboTracksRandom() {
-        for (Character hobo : this.hobos) {
-            hobo.changeTrackRandom();
+    private int isHoboOnTrack(int trackID) {
+        for (int i = 0; i < this.hobos.length; i++) {
+            if (hobos[i].getTrack() == trackID) return i;
         }
+        return -1;
+    }
+
+    public Character getWinner() {
+        Character winner = null;
+        for (int i = 0; i < this.hobos.length; i++) {
+            if (hobos[i].isAlive()) 
+                if (winner == null) winner = hobos[i];
+                else return null;
+        }
+        return winner;
     }
 
     public void update()
     {
-        repaint();
         for (Character hobo : hobos) hobo.changeTrackRandom();
-        for (Track track : tracks) track.spawnNextTrain(secondsCounter);
+        for (int i = 0; i < this.tracks.length; i++) {
+            boolean hasTrain = tracks[i].spawnNextTrain(secondsCounter);
+            if (hasTrain) {
+                int hobo = isHoboOnTrack(i);
+                if (hobo >= 0) this.hobos[hobo].loseLife(); 
+            }
+        }
+        repaint();
     }
 
     public void decide()
@@ -113,9 +132,14 @@ public class AnimationPanel extends JPanel {
         public void paintComponent (Graphics g)  // g can be passed to a class method
         {//start of paintComponent
             super.paintComponent(g);
-            g.setColor(Color.WHITE);
             for(int y = 1; y <= numberOfTracks; y++ )
             {
+                int isHobo = isHoboOnTrack(y-1);
+                if (tracks[y-1].getTrainOn()) {
+                    if (isHobo >= 0) g.setColor(Color.RED);
+                    else g.setColor(Color.YELLOW);
+                } else if (isHobo >= 0) g.setColor(Color.BLUE);
+                else g.setColor(Color.WHITE);
                 g.fillRect(65, (y*25) + ((y-1)*20) , 700, 20);
             }
             
@@ -155,11 +179,12 @@ public class AnimationPanel extends JPanel {
 
             // System.out.println(secondsCounter); //Print the counter
 
-            if(secondsCounter%100==0) {
-                System.out.println("10 second has passed");
-            }
+            // if(secondsCounter%50==0) {
+            //     System.out.println("5 seconds have passed");
+            // }
 
-            if(secondsCounter==300){ //After 30s stop simulation
+            Character winner = getWinner();
+            if (winner != null) {
                 t.stop();
                 panelSwitcher.switchPanel();
             }

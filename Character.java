@@ -7,17 +7,23 @@ public class Character {
     int maxTracks;
     boolean alive;
     Random rand = new Random();
+    int id;
 
-    public Character(int maxTracks) {
+    public Character(int maxTracks, int id) {
         lives = 3;
         onTrack = rand.nextInt(maxTracks);
         this.maxTracks = maxTracks;
         alive = true;
+        this.id = id;
     }
 
     public int getLives() {
         return lives;
     }
+
+    public int getID() { return this.id; }
+
+    public boolean isAlive() { return alive; }
 
     public void loseLife() {
         lives -= 1;

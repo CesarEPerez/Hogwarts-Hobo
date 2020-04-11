@@ -37,7 +37,6 @@ public class Hobo_Game extends JFrame {
 		//setBounds(100, 100, 830, 420);
 		setResizable(false); 
 		setLocationRelativeTo(null);//centers window on launch  
-		endScreen = new EndScreen("Bob", 1);
 		setupScreen = new SetupPanel(new PanelSwitcher() {
 			public void switchPanel() {
 				int numberOfTracks = ((SetupPanel) setupScreen).getNumberOfTracks();
@@ -49,6 +48,10 @@ public class Hobo_Game extends JFrame {
 				new PanelSwitcher() {
 					public void switchPanel() {
 						animationScreen.setVisible(false);
+						Character winner = ((AnimationPanel) animationScreen).getWinner();
+						int id = winner.getID();
+						int lives = winner.getLives();
+						endScreen = new EndScreen(id, lives);
 						add(endScreen);
 					}
 				});

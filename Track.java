@@ -20,13 +20,21 @@ public class Track {
         this.trainOn = trainOn;
     }
 
+    public boolean getTrainOn() { return this.trainOn; }
+
     public int getId() {
         return id;
     }
 
-    public void spawnNextTrain(int currentTime) {
-        if (currentTime - this.lastTrainTime >= this.interTrainTime) this.setTrainOn(true);
-        else this.setTrainOn(false);
+    public boolean spawnNextTrain(int currentTime) {
+        if (currentTime - this.lastTrainTime >= this.interTrainTime) {
+            this.setTrainOn(true);
+            this.lastTrainTime = currentTime;
+            return true;
+        } else { 
+            this.setTrainOn(false);
+            return false;
+        }
     }
 
 }

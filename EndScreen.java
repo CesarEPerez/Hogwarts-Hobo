@@ -4,14 +4,14 @@ import java.awt.*;
 
 public class EndScreen extends JPanel {
 
-    public EndScreen(String winner, int health) {
+    public EndScreen(int id, int lives) {
 
         setBackground(Color.BLACK);
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         
-        JLabel winnerLabel = new JLabel("Winner: " + winner);
-        JLabel healthLabel = new JLabel("Final health: " + health);
+        JLabel winnerLabel = new JLabel("Winner ID: " + id);
+        JLabel healthLabel = new JLabel("Final health: " + lives);
 
         winnerLabel.setFont(new Font("Tahoma", Font.PLAIN, 50));
         healthLabel.setFont(new Font("Tahoma", Font.PLAIN, 50));
