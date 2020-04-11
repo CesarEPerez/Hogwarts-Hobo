@@ -9,9 +9,18 @@ public class EndScreen extends JPanel {
         setBackground(Color.BLACK);
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
+
+        JLabel winnerLabel;
+        JLabel healthLabel;
         
-        JLabel winnerLabel = new JLabel("Winner ID: " + id);
-        JLabel healthLabel = new JLabel("Final health: " + lives);
+        if (id >= 0) {
+            winnerLabel = new JLabel("Winner ID: " + id);
+            healthLabel = new JLabel("Final health: " + lives);
+            
+        } else {
+            winnerLabel = new JLabel("All hobos are dead!");
+            healthLabel = new JLabel();
+        }
 
         winnerLabel.setFont(new Font("Tahoma", Font.PLAIN, 50));
         healthLabel.setFont(new Font("Tahoma", Font.PLAIN, 50));

@@ -49,9 +49,14 @@ public class Hobo_Game extends JFrame {
 					public void switchPanel() {
 						animationScreen.setVisible(false);
 						Character winner = ((AnimationPanel) animationScreen).getWinner();
-						int id = winner.getID();
-						int lives = winner.getLives();
-						endScreen = new EndScreen(id, lives);
+						
+						if (winner != null) {
+							int id;
+							int lives;
+							id = winner.getID();
+							lives = winner.getLives();
+							endScreen = new EndScreen(id, lives);
+						} else endScreen = new EndScreen(-1, 0);
 						add(endScreen);
 					}
 				});

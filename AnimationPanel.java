@@ -7,6 +7,7 @@ public class AnimationPanel extends JPanel {
 
     Timer t = new Timer(100,null);// updates graphics
     int secondsCounter = 0;
+    int tickCounter = 0;
     
     private int numberOfTracks;
     private int numberOfHobos;
@@ -86,7 +87,7 @@ public class AnimationPanel extends JPanel {
 
     private int isHoboOnTrack(int trackID) {
         for (int i = 0; i < this.hobos.length; i++) {
-            if (hobos[i].getTrack() == trackID) return i;
+            if (hobos[i].getTrack() == trackID && hobos[i].isAlive()) return i;
         }
         return -1;
     }
@@ -101,14 +102,19 @@ public class AnimationPanel extends JPanel {
         return winner;
     }
 
+    private boolean allDead() {
+        for (Character hobo : hobos) if (hobo.isAlive()) return false;
+        return true;
+    }
+
     public void update()
     {
         for (Character hobo : hobos) hobo.changeTrackRandom();
         for (int i = 0; i < this.tracks.length; i++) {
-            boolean hasTrain = tracks[i].spawnNextTrain(secondsCounter);
+            boolean hasTrain = tracks[i].spawnNextTrain(tickCounter);
             if (hasTrain) {
                 int hobo = isHoboOnTrack(i);
-                if (hobo >= 0) this.hobos[hobo].loseLife(); 
+                if (hobo >= 0) hobos[hobo].loseLife(); 
             }
         }
         repaint();
@@ -144,10 +150,10 @@ public class AnimationPanel extends JPanel {
             }
             
 
-            for(int y = 0; y < numberOfHobos; y++)
-            {
-                //g.fillOval(405, ((hobos[y].getTrack()*25)+(y*20)) , 20, 20);
-            }
+            // for(int y = 0; y < numberOfHobos; y++)
+            // {
+            //     //g.fillOval(405, ((hobos[y].getTrack()*25)+(y*20)) , 20, 20);
+            // }
 
         }//end of paintComponent
 
@@ -174,17 +180,20 @@ public class AnimationPanel extends JPanel {
         {//start of void
             // System.out.println("Hi");
             secondsCounter++;
+            // tickCounter++;
             // update();//updates graphics
             // decide();//decides what to do 
 
             // System.out.println(secondsCounter); //Print the counter
 
-            if(secondsCounter%20==0) {
+            if(secondsCounter%20==0) { // update only every 2 seconds
+                tickCounter++;
                 update();//updates graphics
+                System.out.println("tick "+tickCounter);
             }
 
             Character winner = getWinner();
-            if (winner != null) {
+            if (winner != null || allDead()) {
                 t.stop();
                 panelSwitcher.switchPanel();
             }

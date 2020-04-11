@@ -27,15 +27,8 @@ public class Character {
 
     public void loseLife() {
         lives -= 1;
-        if (lives == 0) {
-            alive = false;
-        } else {
-            if (getTrack() == this.maxTracks) {
-                setTrack(getTrack() - 1);
-            } else {
-                setTrack(getTrack() + 1);
-            }
-        }
+        System.out.println("Hobo " + id + " took damage! Health: "+lives);
+        if (lives == 0) alive = false;
     }
 
     public int getTrack() {
