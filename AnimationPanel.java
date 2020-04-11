@@ -174,14 +174,14 @@ public class AnimationPanel extends JPanel {
         {//start of void
             // System.out.println("Hi");
             secondsCounter++;
-            update();//updates graphics
+            // update();//updates graphics
             // decide();//decides what to do 
 
             // System.out.println(secondsCounter); //Print the counter
 
-            // if(secondsCounter%50==0) {
-            //     System.out.println("5 seconds have passed");
-            // }
+            if(secondsCounter%20==0) {
+                update();//updates graphics
+            }
 
             Character winner = getWinner();
             if (winner != null) {
