@@ -186,7 +186,7 @@ public class AnimationPanel extends JPanel {
 
             // System.out.println(secondsCounter); //Print the counter
 
-            if(secondsCounter%10==0) { // update only every 1 second
+            if(secondsCounter%5==0) { // update only every 1/2 second
                 tickCounter++;
                 update();//updates graphics
                 System.out.println("tick "+tickCounter);
