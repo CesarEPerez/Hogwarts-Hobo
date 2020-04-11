@@ -78,8 +78,8 @@ public class SetupPanel extends JPanel {
 		numHobosSlider.setSnapToTicks(true);
 		numHobosSlider.setPaintTicks(true);
 		numHobosSlider.setPaintLabels(true);
-		numHobosSlider.setMinimum(1);
-		numHobosSlider.setMaximum(3);
+		numHobosSlider.setMinimum(2);
+		numHobosSlider.setMaximum(5);
 		add(numHobosSlider);
 		
 		JLabel lblIntertrainTime = new JLabel("Inter-train Time");
