@@ -29,6 +29,8 @@ public class Character {
         lives -= 1;
         System.out.println("Hobo " + id + " took damage! Health: "+lives);
         if (lives == 0) alive = false;
+        if (this.onTrack < maxTracks - 1) onTrack++;
+        else onTrack = 0;
     }
 
     public int getTrack() {
